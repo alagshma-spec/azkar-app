@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الإعدادات</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1F3B36">
+<link rel="apple-touch-icon" href="assets/icon-apple-touch.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="js/settings-init.js"></script>
+
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/layout.css">
+<style>
+  .setting-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .setting-label {
+    font-family: var(--font-ui);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .option-row {
+    display: flex;
+    gap: 8px;
+  }
+  .option-btn {
+    flex: 1;
+    padding: 11px 6px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--ink-soft);
+    font-family: var(--font-ui);
+    font-size: 13px;
+    transition: var(--transition-theme), border-color 0.2s ease, color 0.2s ease;
+  }
+  .option-btn.active {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: var(--surface);
+  }
+  .preview-box {
+    background: var(--bg);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    margin-top: 12px;
+    text-align: center;
+    font-family: var(--font-dhikr-active, var(--font-dhikr));
+    font-size: var(--dhikr-font-size, 21px);
+    color: var(--ink);
+    line-height: 1.9;
+  }
+</style>
+</head>
+<body>
+
+<div class="phone">
+
+  <header class="app-header">
+    <button class="theme-toggle" onclick="location.href='index.html'">
+      <span class="icon"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></span>
+      <span>الأقسام</span>
+    </button>
+  </header>
+
+  <section class="section">
+    <h2 class="section-title">الإعدادات</h2>
+    <div class="horizon"></div>
+
+    <!-- الوضع الليلي -->
+    <div class="setting-block">
+      <div class="setting-label">مظهر التطبيق</div>
+      <div class="option-row">
+        <button class="option-btn" id="opt-theme-day" onclick="selectTheme('day')">☀️ نهاري</button>
+        <button class="option-btn" id="opt-theme-night" onclick="selectTheme('night')">🌙 ليلي</button>
+      </div>
+    </div>
+
+    <!-- حجم الخط -->
+    <div class="setting-block">
+      <div class="setting-label">حجم خط الأذكار</div>
+      <div class="option-row">
+        <button class="option-btn" id="opt-size-small" onclick="selectFontSize('small')">صغير</button>
+        <button class="option-btn" id="opt-size-medium" onclick="selectFontSize('medium')">متوسط</button>
+        <button class="option-btn" id="opt-size-large" onclick="selectFontSize('large')">كبير</button>
+      </div>
+    </div>
+
+    <!-- نوع الخط -->
+    <div class="setting-block">
+      <div class="setting-label">نوع خط الأذكار</div>
+      <div class="option-row">
+        <button class="option-btn" id="opt-font-naskh" onclick="selectFontFamily('naskh')">نسخ</button>
+        <button class="option-btn" id="opt-font-amiri" onclick="selectFontFamily('amiri')">كلاسيكي</button>
+      </div>
+      <div class="preview-box" id="font-preview">
+        سُبْحَانَ اللهِ وَبِحَمْدِهِ، سُبْحَانَ اللهِ الْعَظِيمِ
+      </div>
+    </div>
+
+  </section>
+
+</div>
+
+<script src="js/settings.js"></script>
+<script src="js/register-sw.js"></script>
+</body>
+</html>
